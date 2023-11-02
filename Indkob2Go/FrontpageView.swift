@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct FrontpageView: View {
+    @EnvironmentObject var stateController: AuthStateController
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Group {
+            if stateController.userSession != nil {
+                ProfileView()
+            } else {
+                LoginView()
+            }
+        }
     }
 }
 
 #Preview {
-    FrontpageView()
+    FrontpageView().environmentObject(AuthStateController())
 }

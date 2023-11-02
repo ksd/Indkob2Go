@@ -10,18 +10,15 @@ import FirebaseCore
 
 @main
 struct Indkob2GoApp: App {
-    private let authStateController = AuthStateController()
+    private let authStateController: AuthStateController
     
     init(){
         FirebaseApp.configure()
+        authStateController = AuthStateController()
     }
-    
-    
-    
     var body: some Scene {
         WindowGroup {
-            
-            LoginView().environmentObject(authStateController)
+            FrontpageView().environmentObject(authStateController)
         }
     }
 }

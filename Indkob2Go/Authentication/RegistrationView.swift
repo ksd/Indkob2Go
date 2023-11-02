@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    @EnvironmentObject var authController: AuthStateController
     @State private var email = ""
     @State private var fullname = ""
     @State private var password = ""
@@ -37,17 +38,37 @@ struct RegistrationView: View {
                           placeholder: "Skriv dit kodeord",
                           isSecureField: true)
                 
-                InputView(text: $confirmPassword,
-                          title: "Bekræft kodeord",
-                          placeholder: "Bekræft dit kodeord",
-                          isSecureField: true)
+                ZStack(alignment: .trailing) {
+                    InputView(text: $confirmPassword,
+                              title: "Bekræft kodeord",
+                              placeholder: "Bekræft dit kodeord",
+                              isSecureField: true)
+                    if !password.isEmpty && !confirmPassword.isEmpty {
+                        if password == confirmPassword {
+                            Image(systemName: "checkmark.circle.fill")
+                                .imageScale(.large)
+                                .fontWeight(.bold)
+                                .foregroundStyle(Color(.systemGreen))
+                        } else {
+                            Image(systemName: "xmark.circle.fill")
+                                .imageScale(.large)
+                                .fontWeight(.bold)
+                                .foregroundStyle(Color(.systemRed))
+                        }
+                    }
+                }
+                
             }
             .padding(.horizontal)
             .padding(.top, 12)
             
             // sign up button
             Button {
-                print("Sign user up ...")
+                Task {
+                    try await authController.createUser(withEmail:email,
+                                                        password:password,
+                                                        fullname: fullname)
+                }
             } label: {
                 HStack {
                     Text("Opret mig")
@@ -79,6 +100,16 @@ struct RegistrationView: View {
     }
 }
 
+extension RegistrationView: AuthenticationProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && password.count > 5
+        && confirmPassword == password
+        && !fullname.isEmpty
+    }
+}
+
 #Preview {
-    RegistrationView()
+    RegistrationView().environmentObject(AuthStateController())
 }

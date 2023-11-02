@@ -44,6 +44,8 @@
 		443D90892AF0E8C1001313AE /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443D90882AF0E8C1001313AE /* RegistrationView.swift */; };
 		443D908B2AF0ED78001313AE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443D908A2AF0ED78001313AE /* ProfileView.swift */; };
 		443D90902AF0EF3B001313AE /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443D908F2AF0EF3B001313AE /* SettingsRowView.swift */; };
+		444531C12AF393CD0095D644 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444531C02AF393CD0095D644 /* User.swift */; };
+		444531C32AF3A5220095D644 /* FrontpageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444531C22AF3A5220095D644 /* FrontpageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		443D90882AF0E8C1001313AE /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		443D908A2AF0ED78001313AE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		443D908F2AF0EF3B001313AE /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
+		444531C02AF393CD0095D644 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		444531C22AF3A5220095D644 /* FrontpageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontpageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 			children = (
 				4419A5FE2AEF9A6800BB5115 /* GoogleService-Info.plist */,
 				4419A5B92AEF961200BB5115 /* Indkob2GoApp.swift */,
+				444531C22AF3A5220095D644 /* FrontpageView.swift */,
 				4419A6002AEFA7C200BB5115 /* AuthStateController.swift */,
 				443D908D2AF0EECF001313AE /* Authentication */,
 				443D908E2AF0EF15001313AE /* Profile */,
@@ -167,6 +172,7 @@
 		443D90912AF10A76001313AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				444531C02AF393CD0095D644 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -278,7 +284,9 @@
 				443D90892AF0E8C1001313AE /* RegistrationView.swift in Sources */,
 				443D90872AF0DEF8001313AE /* InputView.swift in Sources */,
 				4419A6012AEFA7C200BB5115 /* AuthStateController.swift in Sources */,
+				444531C12AF393CD0095D644 /* User.swift in Sources */,
 				443D908B2AF0ED78001313AE /* ProfileView.swift in Sources */,
+				444531C32AF3A5220095D644 /* FrontpageView.swift in Sources */,
 				4419A5BA2AEF961200BB5115 /* Indkob2GoApp.swift in Sources */,
 				443D90902AF0EF3B001313AE /* SettingsRowView.swift in Sources */,
 			);

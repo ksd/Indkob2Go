@@ -52,8 +52,9 @@ struct LoginView: View {
                 .background(Color(.systemBlue))
                 .cornerRadius(10)
                 .padding(.top, 24)
+                .disabled(!formIsValid)
+                .opacity(formIsValid ? 1.0 : 0.5)
                 
-                Spacer()
                 
                 // sign up button
                 
@@ -68,8 +69,17 @@ struct LoginView: View {
                     }
                     .font(.system(size: 14))
                 }
+                Spacer()
             }
         }
+    }
+}
+
+extension LoginView: AuthenticationProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && password.count > 5
     }
 }
 

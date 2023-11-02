@@ -7,19 +7,35 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
+
+protocol AuthenticationProtocol {
+    var formIsValid: Bool { get }
+}
+
+@MainActor
 final class AuthStateController: ObservableObject {
     
-    @Published var user: User?
+    @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: User?
     
-    @MainActor
+    init() {
+        Task { @MainActor in
+            self.userSession = Auth.auth().currentUser
+            await fetchUser()
+        }
+    }
+    
+    
     func signIn(emailAdress: String, password: String) async {
         do {
             let authDataResult = try await Auth.auth()
                 .signIn(withEmail: emailAdress,
                         password: password)
-            self.user = authDataResult.user
-            print(String(describing: user?.uid))
+            self.userSession = authDataResult.user
+            await fetchUser()
         } catch {
             print("UPS!")
         }
@@ -28,20 +44,39 @@ final class AuthStateController: ObservableObject {
     func signOut(){
         do {
             try Auth.auth().signOut()
+            self.userSession = nil
+            self.currentUser = nil
         } catch {
             print("Error signing out")
         }
     }
     
-    @MainActor
-    func signUp(emailAdress: String, password: String) async {
+    func deleteAccount() {
+        
+    }
+    
+    func createUser(withEmail emailAdress: String, password: String, fullname: String) async throws {
         do {
-            let authDataResult = try await Auth.auth()
-                .createUser(withEmail: emailAdress,
+            let authDataResult = try await Auth.auth().createUser(withEmail: emailAdress,
                             password: password)
-            self.user = authDataResult.user
+            self.userSession = authDataResult.user
+            let user = User(id: authDataResult.user.uid, fullname: fullname, email: emailAdress)
+            let encodedUser = try Firestore.Encoder().encode(user)
+            try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
+            // det er bare en test - kan fjernes, hvis du er tilfreds
+            await fetchUser()
         } catch {
-            print("Double UPS!")
+            print("DEBUG: failed to create user with error \(error.localizedDescription)")
         }
+    }
+    
+    
+    func fetchUser() async {
+        guard let uid = self.userSession?.uid else { return }
+        guard let snapshot = try? await Firestore.firestore()
+            .collection("users")
+            .document(uid)
+            .getDocument() else { return }
+        self.currentUser = try? snapshot.data(as: User.self)
     }
 }
