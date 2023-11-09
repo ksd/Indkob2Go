@@ -33,4 +33,5 @@ struct InputView: View {
 #Preview {
     InputView(text: .constant("kdidriksen@me.com"), title: "Email adresse", placeholder: "placeholder")
         .padding()
+        .previewLayout(.sizeThatFits)
 }

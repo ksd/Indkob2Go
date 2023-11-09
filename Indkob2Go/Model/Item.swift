@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+import FirebaseFirestoreSwift
+
+struct Item: Identifiable, Codable {
+    @DocumentID var id: String?
+    let name: String
+    let description: String?
+    var amount = 1
+    var isBought = false
+}

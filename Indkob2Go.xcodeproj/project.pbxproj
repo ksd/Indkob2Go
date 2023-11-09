@@ -40,12 +40,16 @@
 		4419A5FD2AEF986600BB5115 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 4419A5FC2AEF986600BB5115 /* FirebaseStorageCombine-Community */; };
 		4419A5FF2AEF9A6800BB5115 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4419A5FE2AEF9A6800BB5115 /* GoogleService-Info.plist */; };
 		4419A6012AEFA7C200BB5115 /* AuthStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419A6002AEFA7C200BB5115 /* AuthStateController.swift */; };
+		443203BB2AFA2B3800DE64D9 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443203BA2AFA2B3800DE64D9 /* AddItemView.swift */; };
 		443D90872AF0DEF8001313AE /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443D90862AF0DEF8001313AE /* InputView.swift */; };
 		443D90892AF0E8C1001313AE /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443D90882AF0E8C1001313AE /* RegistrationView.swift */; };
 		443D908B2AF0ED78001313AE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443D908A2AF0ED78001313AE /* ProfileView.swift */; };
 		443D90902AF0EF3B001313AE /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443D908F2AF0EF3B001313AE /* SettingsRowView.swift */; };
 		444531C12AF393CD0095D644 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444531C02AF393CD0095D644 /* User.swift */; };
 		444531C32AF3A5220095D644 /* FrontpageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444531C22AF3A5220095D644 /* FrontpageView.swift */; };
+		445FC0372AF8DA3E00304272 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FC0362AF8DA3E00304272 /* Item.swift */; };
+		445FC0392AF8DB6000304272 /* ShoppingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FC0382AF8DB6000304272 /* ShoppingListView.swift */; };
+		445FC03C2AF8DCB800304272 /* ShoppingListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FC03B2AF8DCB800304272 /* ShoppingListsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,12 +60,16 @@
 		4419A5C02AEF961300BB5115 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4419A5FE2AEF9A6800BB5115 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4419A6002AEFA7C200BB5115 /* AuthStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStateController.swift; sourceTree = "<group>"; };
+		443203BA2AFA2B3800DE64D9 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 		443D90862AF0DEF8001313AE /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		443D90882AF0E8C1001313AE /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		443D908A2AF0ED78001313AE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		443D908F2AF0EF3B001313AE /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		444531C02AF393CD0095D644 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		444531C22AF3A5220095D644 /* FrontpageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontpageView.swift; sourceTree = "<group>"; };
+		445FC0362AF8DA3E00304272 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		445FC0382AF8DB6000304272 /* ShoppingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListView.swift; sourceTree = "<group>"; };
+		445FC03B2AF8DCB800304272 /* ShoppingListsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,8 +133,10 @@
 				4419A5B92AEF961200BB5115 /* Indkob2GoApp.swift */,
 				444531C22AF3A5220095D644 /* FrontpageView.swift */,
 				4419A6002AEFA7C200BB5115 /* AuthStateController.swift */,
+				445FC03B2AF8DCB800304272 /* ShoppingListsController.swift */,
 				443D908D2AF0EECF001313AE /* Authentication */,
 				443D908E2AF0EF15001313AE /* Profile */,
+				445FC03A2AF8DB7D00304272 /* ShoppingList */,
 				443D90912AF10A76001313AE /* Model */,
 				443D908C2AF0EEC2001313AE /* Components */,
 				4419A5BD2AEF961300BB5115 /* Assets.xcassets */,
@@ -173,8 +183,18 @@
 			isa = PBXGroup;
 			children = (
 				444531C02AF393CD0095D644 /* User.swift */,
+				445FC0362AF8DA3E00304272 /* Item.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		445FC03A2AF8DB7D00304272 /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				445FC0382AF8DB6000304272 /* ShoppingListView.swift */,
+				443203BA2AFA2B3800DE64D9 /* AddItemView.swift */,
+			);
+			path = ShoppingList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,7 +300,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				445FC0372AF8DA3E00304272 /* Item.swift in Sources */,
+				445FC0392AF8DB6000304272 /* ShoppingListView.swift in Sources */,
 				4419A5BC2AEF961200BB5115 /* LoginView.swift in Sources */,
+				445FC03C2AF8DCB800304272 /* ShoppingListsController.swift in Sources */,
+				443203BB2AFA2B3800DE64D9 /* AddItemView.swift in Sources */,
 				443D90892AF0E8C1001313AE /* RegistrationView.swift in Sources */,
 				443D90872AF0DEF8001313AE /* InputView.swift in Sources */,
 				4419A6012AEFA7C200BB5115 /* AuthStateController.swift in Sources */,

@@ -9,10 +9,11 @@ import SwiftUI
 
 struct FrontpageView: View {
     @EnvironmentObject var stateController: AuthStateController
+    
     var body: some View {
         Group {
             if stateController.userSession != nil {
-                ProfileView()
+                ShoppingListView()
             } else {
                 LoginView()
             }
