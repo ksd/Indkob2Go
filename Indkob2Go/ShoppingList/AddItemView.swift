@@ -21,7 +21,7 @@ struct AddItemView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    init(item: Item){}
+    
     
     @EnvironmentObject var listController: ShoppingListsController
     
