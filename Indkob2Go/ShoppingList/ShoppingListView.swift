@@ -7,16 +7,24 @@
 
 import SwiftUI
 
+enum Routes {
+    case detail
+    case user
+}
+
 struct ShoppingListView: View {
     @EnvironmentObject var listController: ShoppingListsController
     @State private var showAddSheet = false
     @State private var showConfirmDelete = false
     @State private var deleteDetails: Item?
+    
+    @State private var navigationPaths = [Routes]()
+    
     var body: some View {
-        NavigationStack{
+        NavigationStack(path: $navigationPaths) {
             List {
                 ForEach(listController.items) {item in
-                    Text(item.name)
+                    NavigationLink(item.name, value: Routes.detail)
                 }
                 .onDelete(perform: { indexSet in
                     if let index = indexSet.first {
@@ -26,7 +34,23 @@ struct ShoppingListView: View {
                 })
             }
             .navigationTitle("Indkøbsliste")
+            .navigationDestination(for: Routes.self, destination: { destination in
+                switch(destination) {
+                case .detail:
+                    Text("detail")
+                case .user :
+                    ProfileView()
+                        .navigationBarBackButtonHidden(true)
+                }
+            })
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        navigationPaths.append(.user)
+                    }, label: {
+                        Image(systemName: "slider.horizontal.3")
+                    })
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showAddSheet = true
@@ -42,7 +66,7 @@ struct ShoppingListView: View {
                 Button(role: .destructive) {
                     listController.deleteShoppingItem(item: detail)
                 } label: {
-                    Text("Slet \(detail.name)")
+                    Text("Slet \(detail.name)?")
                 }
                 Button("Cancel", role: .cancel) {
                     deleteDetails = nil

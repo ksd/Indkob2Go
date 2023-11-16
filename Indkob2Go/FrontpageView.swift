@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FrontpageView: View {
     @EnvironmentObject var stateController: AuthStateController
-    
     var body: some View {
         Group {
             if stateController.userSession != nil {
@@ -22,5 +21,7 @@ struct FrontpageView: View {
 }
 
 #Preview {
-    FrontpageView().environmentObject(AuthStateController())
+    FrontpageView()
+        .environmentObject(AuthStateController())
+        .environmentObject(ShoppingListsController())
 }

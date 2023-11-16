@@ -15,4 +15,5 @@ struct Item: Identifiable, Codable {
     let description: String?
     var amount = 1
     var isBought = false
+    var imageData: Data?
 }

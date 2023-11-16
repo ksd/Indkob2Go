@@ -6,14 +6,22 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct AddItemView: View {
+    
+    @State private var isEditing = false
     @State private var name = ""
     @State private var description = ""
     @State private var amount = 1
     @State private var isBought = false
+    @State private var imageData: Data?
+    @State private var selectedItem: PhotosPickerItem?
+    @State private var selectedImage: Image?
     
     @Environment(\.dismiss) var dismiss
+    
+    init(item: Item){}
     
     @EnvironmentObject var listController: ShoppingListsController
     
@@ -35,15 +43,41 @@ struct AddItemView: View {
                 TextField("Beskrivelse", text: $description)
                 Toggle("Er købt", isOn: $isBought)
             }
+            
+            // Select Photo
+            Section {
+                PhotosPicker(selection: $selectedItem) {
+                    Label("Vælg et billede", systemImage: "photo")
+                }
+                selectedImage?
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 250)
+                    .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                   // .containerRelativeFrame(.horizontal)
+            }
+            .onChange(of: selectedItem) {oldValue, newValue in
+                Task {
+                    if let data = try? await newValue?.loadTransferable(type: Data.self) {
+                        if let image = UIImage(data: data){
+                            selectedImage = Image(uiImage: image)
+                            imageData =  image.pngData()
+                        }
+                        
+                    }
+                }
+            }
         }
+        
+        // Opret knap
         Button {
             Task(priority: .high) {
-                listController.addShoppingItem(name: name, amount: amount, description: description, isBought: isBought)
+                listController.addShoppingItem(name: name, amount: amount, description: description, isBought: isBought, imageData: imageData)
                 dismiss()
             }
         } label: {
             HStack {
-                Text("Opret")
+                Text(isEditing ? "Ret" : "Opret")
                     .fontWeight(.semibold)
                 Image(systemName: "arrow.right")
             }
@@ -59,6 +93,7 @@ struct AddItemView: View {
 }
 
 extension AddItemView: AuthenticationProtocol {
+    
     var formIsValid: Bool {
         return !name.isEmpty &&
         !listController.items.contains(where: { item in
