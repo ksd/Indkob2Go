@@ -17,6 +17,7 @@ struct Indkob2GoApp: App {
         FirebaseApp.configure()
         authStateController = AuthStateController()
         shoppingListController = ShoppingListsController()
+        
     }
     var body: some Scene {
         WindowGroup {
